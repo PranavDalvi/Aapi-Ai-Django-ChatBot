@@ -18,13 +18,11 @@ from tensorflow.keras import Sequential
 from tensorflow.keras.layers import Dense, Dropout
 
 def index(request):
-   # return render(request, 'chatbot_project/index.htm',{'bot_response':bot_response})
    return render(request , 'chatbot_project/index.htm')
 
 
 
 def chatBot(request):
-      # query =str(request.method=='GET')
    query = str(request.POST)
    lemmatizer=WordNetLemmatizer()
 
