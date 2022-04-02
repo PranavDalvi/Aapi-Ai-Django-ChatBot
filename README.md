@@ -1,6 +1,6 @@
 # Artificial Intelligence ChatBot
 AI based chatbot with ability to provide human-like conversation.
-Backend - python and django framework
-Frontend - Javascript , Html and css
+Backend - Python and Django framework
+Frontend - JavaScript , Html and CSS
 
 
