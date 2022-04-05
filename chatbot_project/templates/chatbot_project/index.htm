@@ -81,13 +81,64 @@
       margin-top: auto;
       overflow-y: scroll;
       flex-direction: column-reverse;
-      scrollbar-width: none;
       scroll-behavior: smooth;
-      -ms-overflow-style: none;
       padding: 20px 30px;
       border-radius: 5px 5px 0px 0px;
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
     }
 
+    .body::-webkit-scrollbar {
+      display: none;
+    }
+
+    .botTyping-bg {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 0px 0px 10px 20px;
+    }
+
+    .botTyping {
+      /* border: 1px solid black; */
+      margin-right: 60%;
+      /* border-radius: 10px; */
+      /* background-color: dodgerblue; */
+      color: #fff;
+    }
+
+    .circle:nth-child(1),
+    .circle:nth-child(2),
+    .circle:nth-child(3) {
+      width: 10px;
+      height: 10px;
+      background-color: #fff;
+      display: inline-flex;
+      border-radius: 2em;
+      animation: botTyping .9s ease-in infinite;
+    }
+
+    .circle:nth-child(2) {
+      animation-delay: .15s;
+    }
+
+    .circle:nth-child(3) {
+      animation-delay: .25s;
+    }
+
+    @keyframes botTyping {
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
+    }
 
     .bot_message {
       background-color: dodgerblue;
@@ -153,7 +204,7 @@
       background-color: blue;
     }
 
-    .footer button:disabled{
+    .footer button:disabled {
       background-color: #aaaaaa;
     }
 
@@ -189,21 +240,31 @@
 <body>
   <div id="botWindow" class="container hidden">
     <div class="header">
-      <h1>ChatBot</h1>
+      <h1>Aapi</h1>
       <button class="hideBot" type="button" onclick="hideBotFun()">X</button>
     </div>
     <div class="body">
       <p class="bot_message">Hi! How can I help you ? </p>
     </div>
+    <!-- Bot Typing animation -->
+    <div class="botTyping-bg">
+      <div class="botTyping hidden">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <span>Aapi is typing</span>
+      </div>
+    </div>
     {%csrf_token%}
     <form id="myForm">
       <div class="footer">
         <input id="query" type="text" onkeyup="checkText()" placeholder="Type..." name="query">
-        <button class="submit_btn" type="submit" > Send</button>
+        <button class="submit_btn" type="submit"> Send</button>
       </div>
     </form>
   </div>
   <button id="showBotbtn" class="showBot" type="button" onclick="showBotFun()">Chat</button>
+
 
   <!-- ajax string -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -212,6 +273,26 @@
   <script>
     "use strict";
     const fadeIn_fadeOut_transition_speed = 300;
+    const messages = [];
+
+    // updates the chats
+    function updateChatText() {
+      let html = "";
+      messages.slice().reverse().forEach(function (item, index) {
+        if (item.name === "Bot") {
+          html += '<p class= bot_message>' + item.message + '</p>'
+        } else {
+          html += '<p class= user_message>' + item.message + '</p>'
+        }
+      });
+      const chatMessage = document.querySelector(".body");
+      chatMessage.innerHTML = html;
+    }
+
+    // To give chat like feel
+    function scrollToBottom() {
+      messages.scrollTop = messages.scrollHeight;
+    }
 
     function showBotFun() {
       // Initialize Variables
@@ -236,6 +317,13 @@
       setTimeout(() => {
         document.querySelector(".showBot").classList.add("hidden");
       }, fadeIn_fadeOut_transition_speed);
+
+      if (messages.length === 0) {
+        let msg2 = { name: "Bot", message: "Hello! How can I help you?" };
+        messages.push(msg2);
+        updateChatText();
+        scrollToBottom();
+      }
 
     }
 
@@ -284,46 +372,24 @@
 
     // Disable the send button if there is no text in query field
 
-    const regex = /[A-Za-z0-9]/ 
+    const regex = /[A-Za-z0-9]/
     let submit_btn = document.querySelector(".submit_btn");
-    function checkText(){
+    function checkText() {
       const inp_string = document.querySelector("#query").value
-      if(regex.test(inp_string) === false){
+      if (regex.test(inp_string) === false) {
         submit_btn.disabled = true
-      }else{
+      } else {
         submit_btn.disabled = false
       }
     }
 
-    // updates the chats
-    function updateChatText() {
-      let html = "";
-      messages.slice().reverse().forEach(function (item, index) {
-        if (item.name === "Bot") {
-          html += '<p class= bot_message>' + item.message + '</p>'
-        } else {
-          html += '<p class= user_message>' + item.message + '</p>'
-        }
-      });
-      const chatMessage = document.querySelector(".body");
-      chatMessage.innerHTML = html;
-    }
-
-    // To give chat like feel
-    function scrollToBottom() {
-      messages.scrollTop = messages.scrollHeight;
-    }
-
     // Here is the main code which Posts and gets responses
-    let user_input = document.querySelector("#query")
-    let messages = [];
-    let form1 = document.getElementById("myForm");
-    let query = document.getElementById("query").value;
+    const form1 = document.getElementById("myForm");
+    const botTyping = document.querySelector(".botTyping")
+    const user_input = document.querySelector("#query")
+    const txtUserInp = document.querySelector("#query");
     form1.addEventListener("submit", function (e) {
       e.preventDefault();
-      submit_btn.disabled = true;
-
-      let txtUserInp = document.querySelector("#query");
       if (txtUserInp.value == "") {
         return
       }
@@ -331,8 +397,9 @@
       let msg1 = { name: "user1", message: txtUserInp.value }
       messages.push(msg1);
       updateChatText();
-      console.log(txtUserInp.value)
       txtUserInp.value = "";
+      submit_btn.disabled = true;
+      botTyping.classList.remove("hidden");
 
       $.ajax({
         method: "POST",
@@ -344,20 +411,25 @@
         },
         data: txtUserInp.value
       })
-      // This steps should be done if the input is successfully submitted to the bot and get response
+        // This steps should be done if the input is successfully submitted to the bot and get response
         .done(function (response) {
           const botRes = JSON.stringify(response);
           const obj = JSON.parse(botRes);
-          let msg2 = {name: "Bot", message: obj.Bot};
+          let msg2 = { name: "Bot", message: obj.Bot };
           messages.push(msg2);
           updateChatText();
           scrollToBottom();
           submit_btn.disabled = false;
+          botTyping.classList.add("hidden");
         })
         // if any errors they will be thrown into the console
-        .fail(function(response){
-          msg2 = {name: "Bot", messages: "Internal server error, Please reload the page."}
+        .fail(function (response) {
+          let msg2 = { name: "Bot", messages: "Internal server error, Please reload the page." }
+          messages.push(msg2);
+          updateChatText();
+          scrollToBottom();
           submit_btn.disabled = false;
+          botTyping.classList.add("hidden");
         })
     })
 
