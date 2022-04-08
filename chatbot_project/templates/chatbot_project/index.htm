@@ -196,7 +196,7 @@
       <p class="bot_message">Hi! How can I help you ? </p>
     </div>
     {%csrf_token%}
-    <form id="myForm">
+    <form id="myForm" action ="index">
       <div class="footer">
         <input id="query" type="text" onkeyup="checkText()" placeholder="Type..." name="query">
         <button class="submit_btn" type="submit" > Send</button>
