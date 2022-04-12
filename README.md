@@ -6,6 +6,7 @@ AI based chatbot with ability to provide human-like conversation.
 
 
 # How to run ChatBot on your computer 🤔
+- To understand the steps given below you should know how to create new Django project.
 1. First clone the project
 2. Create new folder where you want and copy `pipfile`, `pipfile.lock` and `jsonfile` from the cloned repo to the newly created folder.
 - This is how your newly created project directory will look like
