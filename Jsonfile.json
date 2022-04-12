@@ -1,54 +1,118 @@
-
-
-{ 
+{
   "intents": [
-  {"tag":"greetings",
-    "patterns":[" Hi ", " How are you ?", "Good Morning"],
-    "responses":["Hello :)", "I am Fine !", "Good Morning"]
-  },
-  
-  { "tag": "name",
-    "patterns": [ "What is your name ? ", "What should i call you ? "],
-    "responses": [ " i am alex "]
-  },
-
-  { "tag": "admission",
-    "patterns": [ "What is the admission process ? ",   "How to  take admission ? " , " I want to take admission  "],
-    "responses": [ " For admission details : GO TO WEBSITE --> Go menu --> Admission" ,"LINK"]
-  },
-
-  { "tag": "services",
-    "patterns": [ "What is the college number ?  ", "What is the college staff number ? ",  "What is the college contact ?" ," what is the contact details ?","How to contact college ? "],
-    "responses": [ " Contact details : Kashinath Dhuru Road , Off , Veer Savarkar Marg , Dadar(W) , Mumbai-400028. Contact - (002)62764509" ,"https://kirticollege.edu.in/"]
-  },
-
-  { "tag": "sport",
-      "patterns": [ "Is  sports available in college ? ",   " What extra circulum activites are there in college ? ", "is there cricket in college"],
-      "responses": [ " For sports details : GO TO WEBSITE --> Go menu --> sports" ,"LINK"]
-  },
-  
-  { "tag": "exam",
-      "patterns": [ "What is the exam process ? ",   "when is my exam ?" , " Exam details  "],
-      "responses": [ " For admission details : GO TO WEBSITE --> Go menu --> exams" ,"LINK"]
-  },
-  
-  { "tag": "placement",
-      "patterns": [ "What is the placement process ? ",   " Which companies comes to college ? " , " How to seat for on campus placement ?"," college placement reviews ? "],
-      "responses": [ " For placement details : GO TO WEBSITE --> Go menu --> placement" ,"LINK"]
-  },
-
-  {"tag":"goodbye",
-    "patterns":["Bye", "See You later", "Till next time", "meet you later"],
-    "responses":["See you, Have a nice day :)", "Bye,Come back soon! "]
-  },
-
-   {"tag": "noans",
-    "patterns": ["why","how","when","I","you"],
-    "responses": ["Can't Understand Your Question","please elaborate your question"]
-   },
-   {"tag": "about",
-    "patterns": ["how you doing?","how are you"],
-    "responses": ["Thanks For Asking!How can I help you?"]
-   }
+    {
+      "tag": "greetings",
+      "patterns": [
+        "Hi how are you?",
+        "How are you?",
+        "how you doing?"
+      ],
+      "responses": [
+        "How can I help you?",
+        "Hello :)",
+        "I am Fine!"
+      ]
+    },
+    {
+      "tag": "name",
+      "patterns": [
+        "What is your name?",
+        "What should I call you?"
+      ],
+      "responses": [
+        "I'm Aapi "
+      ]
+    },
+    {
+      "tag": "admission",
+      "patterns": [
+        "What is the admission process?",
+        "How to  take admission?",
+        "I want to take admission"
+      ],
+      "responses": [
+        "For admission details : GO TO WEBSITE --> Go menu --> Admission",
+        "Click here https://kirticollege.edu.in/degree-admission/#"
+      ]
+    },
+    {
+      "tag": "services",
+      "patterns": [
+        "What is the college number?",
+        "What is the college staff number?",
+        "What is the college contact?",
+        "what is the contact details?",
+        "How to contact college?"
+      ],
+      "responses": [
+        "Contact details : Kashinath Dhuru Road , Off , Veer Savarkar Marg , Dadar(W) , Mumbai-400028. Contact - (022)62764509",
+        "Click here: https://kirticollege.edu.in/"
+      ]
+    },
+    {
+      "tag": "sport",
+      "patterns": [
+        "Is sports available in college?",
+        "What extra curricular activities are there in college?",
+        "is there cricket in college"
+      ],
+      "responses": [
+        "For sports details : GO TO WEBSITE --> Go menu --> sports",
+        "LINK"
+      ]
+    },
+    {
+      "tag": "exam",
+      "patterns": [
+        "What is the exam process?",
+        "when is my exam?",
+        "Give me Exam details"
+      ],
+      "responses": [
+        "For admission details : GO TO WEBSITE --> Go menu --> exams",
+        "Click here: https://livestudent.deccansociety.org/"
+      ]
+    },
+    {
+      "tag": "placement",
+      "patterns": [
+        "What is the placement process?",
+        "Which companies comes to college?",
+        "How to seat for on campus placement?",
+        "college placement reviews ? "
+      ],
+      "responses": [
+        "Contact Collage Placement Cell",
+        "For placement details : GO TO WEBSITE --> Go menu --> placement",
+        "LINK"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Good Bye Aapi",
+        "See You later",
+        "Till next time",
+        "meet you later"
+      ],
+      "responses": [
+        "See you, Have a nice day :)",
+        "Bye,Come back soon! ",
+        "Thanks For Asking! "
+      ]
+    },
+    {
+      "tag": "noans",
+      "patterns": [
+        "why",
+        "how",
+        "when",
+        "I",
+        "you"
+      ],
+      "responses": [
+        "Hey there!, I'm still learning stuff can you please elaborate it?"
+      ]
+    }
   ]
 }

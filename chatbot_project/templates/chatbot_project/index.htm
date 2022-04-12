@@ -235,6 +235,8 @@
       display: none;
     }
   </style>
+
+  
 </head>
 
 <body>
@@ -255,8 +257,9 @@
         <span>Aapi is typing</span>
       </div>
     </div>
+    <!-- http://127.0.0.1:8000/home/?query=Hi+hello+how+are+you -->
     {%csrf_token%}
-    <form id="myForm">
+    <form id="myForm" value="query">
       <div class="footer">
         <input id="query" type="text" onkeyup="checkText()" placeholder="Type..." name="query">
         <button class="submit_btn" type="submit"> Send</button>
@@ -269,8 +272,10 @@
   <!-- ajax string -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+
+
   <!-- JavaScript -->
-  <script>
+  <script type="text/javascript">
     "use strict";
     const fadeIn_fadeOut_transition_speed = 300;
     const messages = [];
@@ -324,7 +329,6 @@
         updateChatText();
         scrollToBottom();
       }
-
     }
 
     function hideBotFun() {
@@ -393,23 +397,21 @@
       if (txtUserInp.value == "") {
         return
       }
-
       let msg1 = { name: "user1", message: txtUserInp.value }
       messages.push(msg1);
       updateChatText();
-      txtUserInp.value = "";
       submit_btn.disabled = true;
       botTyping.classList.remove("hidden");
-
+      
       $.ajax({
-        method: "POST",
-        url: "home/",
+        method: "GET",
+        url: "{%url 'chatbot_project:chatBot'%}",
         headers: {
           "Content-type": "application/json",
           "X-Requested-With": "XMLHttpRequest",
           "X-CSRFToken": csrftoken,
         },
-        data: txtUserInp.value
+        data: {query: $('#query').val()}
       })
         // This steps should be done if the input is successfully submitted to the bot and get response
         .done(function (response) {
@@ -421,6 +423,7 @@
           scrollToBottom();
           submit_btn.disabled = false;
           botTyping.classList.add("hidden");
+          txtUserInp.value = "";
         })
         // if any errors they will be thrown into the console
         .fail(function (response) {
@@ -430,10 +433,10 @@
           scrollToBottom();
           submit_btn.disabled = false;
           botTyping.classList.add("hidden");
+          txtUserInp.value = "";
         })
     })
 
   </script>
 </body>
-
 </html>
