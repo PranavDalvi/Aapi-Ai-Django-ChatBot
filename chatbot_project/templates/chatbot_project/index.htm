@@ -264,7 +264,6 @@
       padding: 10px 10px 10px 10px;
       border: none;
       border-radius: var(--chatBot_windowCommonRadius);
-      border-bottom-right-radius: 0% !important;
       outline: none;
       background-color: dodgerblue;
       color: #f8f8f8;
@@ -356,9 +355,11 @@
     const messages = [];
     let popupDialog = document.querySelector(".popup-dialog")
 
+    // onload function will run when page is rendered
     window.onload = function () {
-
+      // ChatBot dialog popup function
       setTimeout(() => {
+        // ChatBot dialog will only popup if user haven't used the chatBot.
         if (messages.length === 0) {
           popupDialog.classList.remove("hidden");
           popupDialog.style.opacity = 0;
