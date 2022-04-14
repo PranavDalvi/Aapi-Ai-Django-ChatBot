@@ -60,3 +60,7 @@ INSTALLED_APPS = [
 7. Now your done with `project` folder close it and open `chatbot_project` folder and copy the its contents from cloned repo to your newly created `chatbot_project folder`
 8. Hooray! we are done with copying stuff 🤩 now lets open terminal in your newly created project and run `python manage.py migrate`
 9. And run `python manage.py runserver`
+
+***
+- ChatBot image are taken from [flaticon](https://www.flaticon.com/free-icons/bot)
+- User image are taken from [freeiconspng](https://www.freeiconspng.com/img/7563)
