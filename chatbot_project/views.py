@@ -137,3 +137,4 @@ def chatBot(request):
    bot_response = get_response(ints, readobj)
    # print(bot_response)
    return JsonResponse({"Bot": bot_response})
+   
