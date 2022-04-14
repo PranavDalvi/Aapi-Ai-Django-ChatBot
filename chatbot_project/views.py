@@ -23,7 +23,7 @@ def index(request):
 
 def chatBot(request):
    query = str(request.GET.get("query"))
-   print(query)
+   # print(query)
    lemmatizer=WordNetLemmatizer()
 
    with open('jsonfile.json') as fileobj:
@@ -131,9 +131,9 @@ def chatBot(request):
          #     break
       return result
 
-   print(" Go Bot is Running ! ")
+   print(" Aapi is Running ! ")
    message = query
    ints = predict_intent_tag(message)
    bot_response = get_response(ints, readobj)
-   print(bot_response)
+   # print(bot_response)
    return JsonResponse({"Bot": bot_response})

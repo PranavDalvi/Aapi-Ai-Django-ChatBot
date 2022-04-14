@@ -17,7 +17,8 @@
       "tag": "name",
       "patterns": [
         "What is your name?",
-        "What should I call you?"
+        "What should I call you?",
+        "who are you?"
       ],
       "responses": [
         "I'm Aapi "
@@ -27,7 +28,7 @@
       "tag": "admission",
       "patterns": [
         "What is the admission process?",
-        "How to  take admission?",
+        "How to take admission?",
         "I want to take admission"
       ],
       "responses": [
@@ -66,7 +67,7 @@
       "patterns": [
         "What is the exam process?",
         "when is my exam?",
-        "Give me Exam details"
+        "Give me exam details"
       ],
       "responses": [
         "For admission details : GO TO WEBSITE --> Go menu --> exams",

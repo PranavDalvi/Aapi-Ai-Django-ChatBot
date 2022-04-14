@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,6 +64,11 @@
       padding: 15px;
     }
 
+    .header img {
+      width: 70px;
+      padding: 10px;
+    }
+
     .hideBot {
       padding: 10px;
       font-size: 18px;
@@ -82,7 +89,7 @@
       overflow-y: scroll;
       flex-direction: column-reverse;
       scroll-behavior: smooth;
-      padding: 20px 30px;
+      padding: 20px 10px;
       border-radius: 5px 5px 0px 0px;
       -ms-overflow-style: none;
       /* IE and Edge */
@@ -140,6 +147,19 @@
       }
     }
 
+    .bot-message-block {
+      display: flex;
+      animation: floatup .5s forwards;
+      align-items: baseline;
+    }
+
+    .user-message-block {
+      display: flex;
+      animation: floatup .5s forwards;
+      align-items: baseline;
+      flex-direction: row-reverse;
+    }
+
     .bot_message {
       background-color: dodgerblue;
       padding: 10px;
@@ -148,7 +168,6 @@
       border-top-left-radius: 0px !important;
       border-radius: 10px;
       margin-bottom: 15px;
-      animation: floatup .5s forwards
     }
 
     .user_message {
@@ -160,7 +179,16 @@
       border-top-right-radius: 0px !important;
       border-radius: 10px;
       margin-bottom: 15px;
-      animation: floatup .5s forwards
+    }
+
+    .bot-profile {
+      width: 13%;
+      padding-right: 5px;
+    }
+
+    .user-profile {
+      width: 12%;
+      padding-left: 5px;
     }
 
     @keyframes floatup {
@@ -222,13 +250,50 @@
       color: #f8f8f8;
       box-shadow: 10px 10px 5px #aaaaaa;
       cursor: pointer;
-      transition: var(--fadeIn_fadeOut_transition_speed);
-      transition-property: opacity, background-color, transform;
-      z-index: var(--chatBot_ZIndex);
     }
 
     .showBot:hover {
       background-color: blue;
+    }
+
+    .aapi-popup-dialog {
+      position: absolute;
+      right: 30px;
+      bottom: 95px;
+      font-size: 18px;
+      padding: 10px 10px 10px 10px;
+      border: none;
+      border-radius: var(--chatBot_windowCommonRadius);
+      border-bottom-right-radius: 0% !important;
+      outline: none;
+      background-color: dodgerblue;
+      color: #f8f8f8;
+    }
+
+    .attention {
+      position: absolute;
+      right: 25px;
+      bottom: 145px;
+      padding: 10px;
+      border-radius: 100%;
+      background-color: red;
+    }
+
+    .down-triangle {
+      width: 0;
+      height: 0;
+      position: absolute;
+      right: 68px;
+      bottom: 75px;
+      border: 20px solid transparent;
+      border-top: 20px solid dodgerblue;
+      border-bottom: 0;
+    }
+
+    .fade-in-transition {
+      transition: var(--fadeIn_fadeOut_transition_speed);
+      transition-property: opacity, background-color, transform;
+      z-index: var(--chatBot_ZIndex);
     }
 
     .hidden {
@@ -242,7 +307,10 @@
 <body>
   <div id="botWindow" class="container hidden">
     <div class="header">
-      <h1>Aapi</h1>
+      <div class="header">
+        <h1>Aapi</h1>
+        <img src='{% static "chatbot_project/images/bot.png" %}'>
+      </div>
       <button class="hideBot" type="button" onclick="hideBotFun()">X</button>
     </div>
     <div class="body">
@@ -257,7 +325,6 @@
         <span>Aapi is typing</span>
       </div>
     </div>
-    <!-- http://127.0.0.1:8000/home/?query=Hi+hello+how+are+you -->
     {%csrf_token%}
     <form id="myForm" value="query">
       <div class="footer">
@@ -266,7 +333,15 @@
       </div>
     </form>
   </div>
-  <button id="showBotbtn" class="showBot" type="button" onclick="showBotFun()">Chat</button>
+  <!-- Here is the Aapi dialog message box to catch user's attention -->
+  <div class="popup-dialog fade-in-transition hidden">
+    <div class="aapi-popup-dialog">
+      <span>Hi there, I'm Aapi. <br>How may I help you today?</span>
+    </div>
+    <div class="attention"></div>
+    <div class="down-triangle"></div>
+  </div>
+  <button id="showBotbtn" class="showBot fade-in-transition" type="button" onclick="showBotFun()">Chat</button>
 
 
   <!-- ajax string -->
@@ -279,15 +354,31 @@
     "use strict";
     const fadeIn_fadeOut_transition_speed = 300;
     const messages = [];
+    let popupDialog = document.querySelector(".popup-dialog")
+
+    window.onload = function () {
+
+      setTimeout(() => {
+        if (messages.length === 0) {
+          popupDialog.classList.remove("hidden");
+          popupDialog.style.opacity = 0;
+          setTimeout(()=>{
+            popupDialog.style.opacity = 1;
+          }, fadeIn_fadeOut_transition_speed)
+        }
+      }, 5000);
+    }
 
     // updates the chats
     function updateChatText() {
       let html = "";
+      let botHtmlTag = '<div class = "bot-message-block"><img class = "bot-profile" src="{% static "chatbot_project/images/bot.png" %}"><p class= bot_message>';
+      let userHtmlTag = '<div class = "user-message-block"><img class = "user-profile" src="{% static "chatbot_project/images/user.png" %}"><p class= user_message>';
       messages.slice().reverse().forEach(function (item, index) {
         if (item.name === "Bot") {
-          html += '<p class= bot_message>' + item.message + '</p>'
+          html += botHtmlTag + item.message + '</p></div>'
         } else {
-          html += '<p class= user_message>' + item.message + '</p>'
+          html += userHtmlTag + item.message + '</p></div>'
         }
       });
       const chatMessage = document.querySelector(".body");
@@ -317,10 +408,12 @@
       //Main Logic to hide Chat button
       const showBot = document.getElementById("showBotbtn");
       showBot.style.opacity = 0;
+      popupDialog.style.opacity = 0;
 
       //Pausing the flow of the code for 0.3 secs
       setTimeout(() => {
         document.querySelector(".showBot").classList.add("hidden");
+        popupDialog.classList.add("hidden");
       }, fadeIn_fadeOut_transition_speed);
 
       if (messages.length === 0) {
@@ -402,7 +495,7 @@
       updateChatText();
       submit_btn.disabled = true;
       botTyping.classList.remove("hidden");
-      
+
       $.ajax({
         method: "GET",
         url: "{%url 'chatbot_project:chatBot'%}",
@@ -411,7 +504,7 @@
           "X-Requested-With": "XMLHttpRequest",
           "X-CSRFToken": csrftoken,
         },
-        data: {query: $('#query').val()}
+        data: { query: $('#query').val() }
       })
         // This steps should be done if the input is successfully submitted to the bot and get response
         .done(function (response) {
@@ -439,4 +532,5 @@
 
   </script>
 </body>
+
 </html>
