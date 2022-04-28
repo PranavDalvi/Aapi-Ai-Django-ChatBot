@@ -9,6 +9,11 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 #from .models import Response, models
 
+# Remove the comments to download additional nltk packages
+# import nltk
+# nltk.download('punkt')
+# nltk.download('wordnet')
+# nltk.download('omw-1.4')
 
 # from sklearn.feature_extraction.text import TfidfVectorizer
 
