@@ -1,16 +1,29 @@
 {
   "intents": [
     {
-      "tag": "greetings",
+      "tag": "greetings1",
       "patterns": [
-        "Hi how are you?",
-        "How are you?",
-        "how you doing?"
+        "Hi how are you?"
       ],
       "responses": [
-        "How can I help you?",
-        "Hello :)",
-        "I am Fine!"
+        "Hello! How can I help you today?",
+        "Hello :)"
+      ]
+
+    },
+    {
+      "tag":"greetings2",
+      "patterns": [
+        "How are you doing?",
+        "How are you?",
+        "Hi how are you?",
+        "Hello how are you?"
+      ],
+      "responses": [
+        "I'm fine what about you?",
+        "Thanks for asking! I'm excellent. How about you?",
+        "You know, according to my lawyer, I don't have to answer that.",
+        "Fine, thanks. What do you got for me today?"
       ]
     },
     {
@@ -21,19 +34,40 @@
         "who are you?"
       ],
       "responses": [
-        "I'm Aapi "
+        "I'm Aapi and I'm here to help you out ;)"
       ]
     },
     {
-      "tag": "admission",
+      "tag": "admission-degree",
       "patterns": [
-        "What is the admission process?",
-        "How to take admission?",
-        "I want to take admission"
+        "What is the admission process for degree?",
+        "How to take admission for degree?",
+        "I want to take admission for degree"
       ],
       "responses": [
-        "For admission details : GO TO WEBSITE --> Go menu --> Admission",
-        "Click here https://kirticollege.edu.in/degree-admission/#"
+        "https://kirticollege.edu.in/category/degree-admission-notices/"
+      ]
+    },
+    {
+      "tag": "admission-pg",
+      "patterns": [
+        "What is the admission process for PG?",
+        "How to take admission for Post?",
+        "I want to take admission for PG"
+      ],
+      "responses": [
+        "https://kirticollege.edu.in/category/post-graduation-notices/"
+      ]
+    },
+    {
+      "tag": "admission-junior",
+      "patterns": [
+        "What is the admission process for junior?",
+        "How to take admission for junior?",
+        "I want to take admission for junior"
+      ],
+      "responses": [
+        "https://kirticollege.edu.in/#"
       ]
     },
     {
@@ -46,32 +80,29 @@
         "How to contact college?"
       ],
       "responses": [
-        "Contact details : Kashinath Dhuru Road , Off , Veer Savarkar Marg , Dadar(W) , Mumbai-400028. Contact - (022)62764509",
-        "Click here: https://kirticollege.edu.in/"
+        "https://kirticollege.edu.in/contact-us/"
       ]
     },
     {
       "tag": "sport",
       "patterns": [
         "Is sports available in college?",
-        "What extra curricular activities are there in college?",
-        "is there cricket in college"
+        "Is NCC available in college?",
+        "Is NSS available in college?",
+        "What extra curricular activities are there in college?"
       ],
       "responses": [
-        "For sports details : GO TO WEBSITE --> Go menu --> sports",
-        "LINK"
+        "Please contact college"
       ]
     },
     {
       "tag": "exam",
       "patterns": [
-        "What is the exam process?",
         "when is my exam?",
         "Give me exam details"
       ],
       "responses": [
-        "For admission details : GO TO WEBSITE --> Go menu --> exams",
-        "Click here: https://livestudent.deccansociety.org/"
+        "https://livestudent.deccansociety.org/"
       ]
     },
     {
@@ -83,9 +114,7 @@
         "college placement reviews ? "
       ],
       "responses": [
-        "Contact Collage Placement Cell",
-        "For placement details : GO TO WEBSITE --> Go menu --> placement",
-        "LINK"
+        "Contact Collage Placement Cell"
       ]
     },
     {

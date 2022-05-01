@@ -107,10 +107,7 @@
     }
 
     .botTyping {
-      /* border: 1px solid black; */
       margin-right: 60%;
-      /* border-radius: 10px; */
-      /* background-color: dodgerblue; */
       color: #fff;
     }
 
@@ -377,7 +374,13 @@
       let userHtmlTag = '<div class = "user-message-block"><img class = "user-profile" src="{% static "chatbot_project/images/user.png" %}"><p class= user_message>';
       messages.slice().reverse().forEach(function (item, index) {
         if (item.name === "Bot") {
-          html += botHtmlTag + item.message + '</p></div>'
+          if (item.message.includes("https://") == true){
+            html += `<div class = "bot-message-block"><img class = "bot-profile" src="{% static "chatbot_project/images/bot.png" %}"><a class= bot_message href="${item.message}">${item.message}</a></div>`
+            console.log("This is working");
+          }
+          else{
+            html += botHtmlTag + item.message + '</p></div>'
+          }
         } else {
           html += userHtmlTag + item.message + '</p></div>'
         }
