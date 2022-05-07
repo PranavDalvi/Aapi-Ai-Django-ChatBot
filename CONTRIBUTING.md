@@ -6,15 +6,15 @@ The project is built with Django and HTML, CSS, JS.
 - *Note: You need python and some of its libries like (django, nltk, numpy, tensorflow) to run and test the code which can be install pip*
 - requirements.txt has details of all the dependencies which are needed to run this project. To run the project steps are given below:
 
-- To understand the steps given below you should know how to create new Django project and Python virtual environment.
-1. Create a new Django project. (why? because we will be needing secret key to run the project)
-2. Open the newly created Django project and copy the full string of secret key from `settings.py`.
-3. Now open the ChatBot project then open the project folder and create the new file named as `.env` and paste the secret key.
+- To understand the steps given below, you should know how to create a new Django project and a Python virtual environment.
+1. Download the required libraries from requirements.txt (Python virtual environment is required).
+2. Create a new Django project. (why? Because we will need a `secret key` to run the project).
+3. Open the newly created Django project and copy the full string of secret key from `settings.py`.
+4. Now open the ChatBot project then open the project folder and create a new file named as `.env` and paste the secret key.
 - .env file should look like this:
 ```
 SECRET_KEY = 'dlm*zt#1-3g!xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 ```
-4. Now Download the requirements from requirements.txt (Python virtual environment is required).
 5. Do the migrations and run the project.
 
 ## Hello First-time Contributors 👋

@@ -9,108 +9,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PYBOT</title>
 
-  <!-- CSS -->
+<!-- Link to Static CSS -->
+  <link rel="stylesheet" type="text/css" href="{% static 'chatbot_project/stylesheets/staticStyle.css' %}">
+
+  <!-- Dynamic CSS -->
   <style>
     :root {
       --fadeIn_fadeOut_transition_speed: 300ms;
-      --chatBot_ZIndex: 100;
-      /*Z-Index to keep Chat Bot top of all other elements*/
-      --chatBot_windowCommonRadius: 5px;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      font-family: sans-serif;
-      box-sizing: border-box;
-    }
-
-    body {
-      background-color: #f8f8f8;
-      display: flex;
-      flex-direction: column;
-      flex-wrap: nowrap;
-      justify-content: space-evenly;
-      align-items: center;
-    }
-
-    .container {
-      position: absolute;
-      right: 30px;
-      /*Right and bottom are set to position the chat bot window in the right-corner of the screen*/
-      bottom: 60px;
-      width: 450px;
-      height: 80vh;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 10px 10px 5px #aaaaaa;
-      background-color: dodgerblue;
-      border: 2px solid dodgerblue;
-      border-radius: var(--chatBot_windowCommonRadius);
-      transition: var(--fadeIn_fadeOut_transition_speed);
-      transition-property: opacity, background-color, transform;
-      z-index: var(--chatBot_ZIndex);
-    }
-
-    .header {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      justify-content: space-between;
-    }
-
-    .header h1 {
-      color: white;
-      padding: 15px;
-    }
-
-    .header img {
-      width: 70px;
-      padding: 10px;
-    }
-
-    .hideBot {
-      padding: 10px;
-      font-size: 18px;
-      border: none;
-      outline: none;
-      background-color: dodgerblue;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .body {
-      display: flex;
-      flex: 1;
-      color: white;
-      background-color: rgba(0, 0, 0, 0.7);
-      margin-top: auto;
-      overflow-y: scroll;
-      flex-direction: column-reverse;
-      scroll-behavior: smooth;
-      padding: 20px 10px;
-      border-radius: 5px 5px 0px 0px;
-      -ms-overflow-style: none;
-      /* IE and Edge */
-      scrollbar-width: none;
-      /* Firefox */
-    }
-
-    .body::-webkit-scrollbar {
-      display: none;
-    }
-
-    .botTyping-bg {
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 0px 0px 10px 20px;
-    }
-
-    .botTyping {
-      margin-right: 60%;
-      color: #fff;
-    }
-
+    /*Bot typing animation*/
     .circle:nth-child(1),
     .circle:nth-child(2),
     .circle:nth-child(3) {
@@ -144,48 +52,9 @@
       }
     }
 
-    .bot-message-block {
-      display: flex;
+    /*Chat style animation*/
+    .floatup-msg{
       animation: floatup .5s forwards;
-      align-items: baseline;
-    }
-
-    .user-message-block {
-      display: flex;
-      animation: floatup .5s forwards;
-      align-items: baseline;
-      flex-direction: row-reverse;
-    }
-
-    .bot_message {
-      background-color: dodgerblue;
-      padding: 10px;
-      color: white;
-      width: fit-content;
-      border-top-left-radius: 0px !important;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-
-    .user_message {
-      margin-left: auto;
-      background-color: white;
-      color: black;
-      padding: 10px;
-      width: fit-content;
-      border-top-right-radius: 0px !important;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-
-    .bot-profile {
-      width: 13%;
-      padding-right: 5px;
-    }
-
-    .user-profile {
-      width: 12%;
-      padding-left: 5px;
     }
 
     @keyframes floatup {
@@ -199,91 +68,9 @@
       }
     }
 
-    .footer {
-      display: flex;
-    }
-
-    .footer input {
-      flex: 1;
-      height: 40px;
-      border: none;
-      border-radius: 0px 0px 0px 5px;
-      outline: none;
-      padding-left: 5px;
-      font-size: 16px;
-    }
-
-    .footer button {
-      width: 100px;
-      font-size: 18px;
-      border: none;
-      border-radius: 0px 0px 5px 0px;
-      outline: none;
-      background-color: dodgerblue;
-      color: white;
-      cursor: pointer;
+    /*ChatBot window fade in and fade out animation*/
+    .fade-out-transition{
       transition: background-color 0.3s ease;
-    }
-
-    .footer button:hover {
-      background-color: blue;
-    }
-
-    .footer button:disabled {
-      background-color: #aaaaaa;
-    }
-
-    .showBot {
-      position: absolute;
-      right: 30px;
-      /*Right and bottom are set to position the chat bot window in the right-corner of the screen*/
-      bottom: 25px;
-      padding: 10px 40px 10px 37px;
-      font-size: 18px;
-      border: none;
-      border-radius: var(--chatBot_windowCommonRadius);
-      outline: none;
-      background-color: dodgerblue;
-      color: #f8f8f8;
-      box-shadow: 10px 10px 5px #aaaaaa;
-      cursor: pointer;
-    }
-
-    .showBot:hover {
-      background-color: blue;
-    }
-
-    .aapi-popup-dialog {
-      position: absolute;
-      right: 30px;
-      bottom: 95px;
-      font-size: 18px;
-      padding: 10px 10px 10px 10px;
-      border: none;
-      border-radius: var(--chatBot_windowCommonRadius);
-      outline: none;
-      background-color: dodgerblue;
-      color: #f8f8f8;
-    }
-
-    .attention {
-      position: absolute;
-      right: 25px;
-      bottom: 145px;
-      padding: 10px;
-      border-radius: 100%;
-      background-color: red;
-    }
-
-    .down-triangle {
-      width: 0;
-      height: 0;
-      position: absolute;
-      right: 68px;
-      bottom: 75px;
-      border: 20px solid transparent;
-      border-top: 20px solid dodgerblue;
-      border-bottom: 0;
     }
 
     .fade-in-transition {
@@ -291,23 +78,19 @@
       transition-property: opacity, background-color, transform;
       z-index: var(--chatBot_ZIndex);
     }
-
-    .hidden {
-      display: none;
-    }
   </style>
 
 
 </head>
 
 <body>
-  <div id="botWindow" class="container hidden">
+  <div id="botWindow" class="container fade-in-transition hidden">
     <div class="header">
       <div class="header">
         <h1>Aapi</h1>
         <img src='{% static "chatbot_project/images/bot.png" %}'>
       </div>
-      <button class="hideBot" type="button" onclick="hideBotFun()">X</button>
+      <button class="hideBot fade-out-transition" type="button" onclick="hideBotFun()">X</button>
     </div>
     <div class="body">
       <p class="bot_message">Hi! How can I help you ? </p>
@@ -370,12 +153,12 @@
     // updates the chats
     function updateChatText() {
       let html = "";
-      let botHtmlTag = '<div class = "bot-message-block"><img class = "bot-profile" src="{% static "chatbot_project/images/bot.png" %}"><p class= bot_message>';
-      let userHtmlTag = '<div class = "user-message-block"><img class = "user-profile" src="{% static "chatbot_project/images/user.png" %}"><p class= user_message>';
+      let botHtmlTag = '<div class = "bot-message-block floatup-msg"><img class = "bot-profile" src="{% static "chatbot_project/images/bot.png" %}"><p class= bot_message>';
+      let userHtmlTag = '<div class = "user-message-block floatup-msg"><img class = "user-profile" src="{% static "chatbot_project/images/user.png" %}"><p class= user_message>';
       messages.slice().reverse().forEach(function (item, index) {
         if (item.name === "Bot") {
           if (item.message.includes("https://") == true){
-            html += `<div class = "bot-message-block"><img class = "bot-profile" src="{% static "chatbot_project/images/bot.png" %}"><a class= bot_message href="${item.message}">${item.message}</a></div>`
+            html += `<div class = "bot-message-block floatup-msg"><img class = "bot-profile" src="{% static "chatbot_project/images/bot.png" %}"><a class= bot_message href="${item.message}">${item.message}</a></div>`
             console.log("This is working");
           }
           else{

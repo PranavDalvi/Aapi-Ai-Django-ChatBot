@@ -1,0 +1,228 @@
+    :root {
+      --chatBot_ZIndex: 100;
+      /*Z-Index to keep Chat Bot top of all other elements*/
+      --chatBot_windowCommonRadius: 5px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f8f8f8;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+
+    .showBot {
+      position: absolute;
+      right: 30px;
+      /*Right and bottom are set to position the chat bot window in the right-corner of the screen*/
+      bottom: 25px;
+      padding: 10px 40px 10px 37px;
+      font-size: 18px;
+      border: none;
+      border-radius: var(--chatBot_windowCommonRadius);
+      outline: none;
+      background-color: dodgerblue;
+      color: #f8f8f8;
+      box-shadow: 10px 10px 5px #aaaaaa;
+      cursor: pointer;
+    }
+
+    .container {
+      position: absolute;
+      right: 30px;
+      /*Right and bottom are set to position the chat bot window in the right-corner of the screen*/
+      bottom: 60px;
+      width: 450px;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 10px 10px 5px #aaaaaa;
+      background-color: dodgerblue;
+      border: 2px solid dodgerblue;
+      border-radius: var(--chatBot_windowCommonRadius);
+      z-index: var(--chatBot_ZIndex);
+    }
+
+    .header {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+    }
+
+    .header h1 {
+      color: white;
+      padding: 15px;
+    }
+
+    .header img {
+      width: 70px;
+      padding: 10px;
+    }
+
+    .body {
+      display: flex;
+      flex: 1;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.7);
+      margin-top: auto;
+      overflow-y: scroll;
+      flex-direction: column-reverse;
+      scroll-behavior: smooth;
+      padding: 20px 10px;
+      border-radius: 5px 5px 0px 0px;
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
+
+    .body::-webkit-scrollbar {
+      display: none;
+    }
+
+    .botTyping-bg {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 0px 0px 10px 20px;
+    }
+
+    .botTyping {
+      margin-right: 60%;
+      color: #fff;
+    }
+
+    .bot_message {
+      background-color: dodgerblue;
+      padding: 10px;
+      color: white;
+      width: fit-content;
+      border-top-left-radius: 0px !important;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .user_message {
+      margin-left: auto;
+      background-color: white;
+      color: black;
+      padding: 10px;
+      width: fit-content;
+      border-top-right-radius: 0px !important;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .bot-profile {
+      width: 13%;
+      padding-right: 5px;
+    }
+
+    .user-profile {
+      width: 12%;
+      padding-left: 5px;
+    }
+
+    .bot-message-block {
+      display: flex;
+      align-items: baseline;
+    }
+
+    .user-message-block {
+      display: flex;
+      align-items: baseline;
+      flex-direction: row-reverse;
+    }
+
+    .footer {
+      display: flex;
+    }
+
+    .footer input {
+      flex: 1;
+      height: 40px;
+      border: none;
+      border-radius: 0px 0px 0px 5px;
+      outline: none;
+      padding-left: 5px;
+      font-size: 16px;
+    }
+
+    .footer button {
+      width: 100px;
+      font-size: 18px;
+      border: none;
+      border-radius: 0px 0px 5px 0px;
+      outline: none;
+      background-color: dodgerblue;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .footer button:hover {
+      background-color: blue;
+    }
+
+    .footer button:disabled {
+      background-color: #aaaaaa;
+    }
+
+    .showBot:hover {
+      background-color: blue;
+    }
+
+    .hideBot {
+      padding: 10px;
+      font-size: 18px;
+      border: none;
+      outline: none;
+      background-color: dodgerblue;
+      color: white;
+      cursor: pointer;
+    }
+
+    .aapi-popup-dialog {
+      position: absolute;
+      right: 30px;
+      bottom: 95px;
+      font-size: 18px;
+      padding: 10px 10px 10px 10px;
+      border: none;
+      border-radius: var(--chatBot_windowCommonRadius);
+      outline: none;
+      background-color: dodgerblue;
+      color: #f8f8f8;
+    }
+
+    .attention {
+      position: absolute;
+      right: 25px;
+      bottom: 145px;
+      padding: 10px;
+      border-radius: 100%;
+      background-color: red;
+    }
+
+    .down-triangle {
+      width: 0;
+      height: 0;
+      position: absolute;
+      right: 68px;
+      bottom: 75px;
+      border: 20px solid transparent;
+      border-top: 20px solid dodgerblue;
+      border-bottom: 0;
+    }
+
+    .hidden {
+      display: none;
+    }
