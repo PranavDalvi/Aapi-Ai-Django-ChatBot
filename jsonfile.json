@@ -38,6 +38,18 @@
       ]
     },
     {
+      "tag":"help",
+      "patterns": [
+        "help",
+        "Help",
+        "Help!",
+        "help!"
+      ],
+      "responses":[
+        "Ok, you can ask me about:<br> Admission process for degree, PG, Junior. <br>College contact details.<br>Extra curricular activities.<br> Exam details.<br> and about placements."
+      ]
+    },
+    {
       "tag": "admission-degree",
       "patterns": [
         "What is the admission process for degree?",

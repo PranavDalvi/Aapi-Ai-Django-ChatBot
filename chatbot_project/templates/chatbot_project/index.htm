@@ -159,7 +159,6 @@
         if (item.name === "Bot") {
           if (item.message.includes("https://") == true){
             html += `<div class = "bot-message-block floatup-msg"><img class = "bot-profile" src="{% static "chatbot_project/images/bot.png" %}"><a class= bot_message href="${item.message}">${item.message}</a></div>`
-            console.log("This is working");
           }
           else{
             html += botHtmlTag + item.message + '</p></div>'
@@ -204,7 +203,7 @@
       }, fadeIn_fadeOut_transition_speed);
 
       if (messages.length === 0) {
-        let msg2 = { name: "Bot", message: "Hello! How can I help you?" };
+        let msg2 = { name: "Bot", message: "Hello! How can I help you? <br> Type 'help' to get help" };
         messages.push(msg2);
         updateChatText();
         scrollToBottom();
