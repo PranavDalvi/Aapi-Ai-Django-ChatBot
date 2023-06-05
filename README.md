@@ -6,10 +6,14 @@ Chatbot is created with intention to shorten the gap between business and custom
 
 Aapi is build with passion and love by 3 friends [Pranav Dalvi](https://github.com/PranavDalvi), [Aditya Dorge](https://github.com/adityadorge) and [Omkar Pawar](https://github.com/OmkarPawar14) on 12th April 2022.
 
-Aapi is powerful yet easy to chat which is build with powerful programming tools.
-- Python with Django framework : acts as a strong backend support that helps Aapi to be fast but smooth.
-- JavaScript with HTML/CSS : Provides user-friendly interface which gives Aapi an attractive look !
-
+# Technologies Used:
+- Python3
+- Django Framework
+- Tensorflow
+- NLTK
+- Numpy
+- HTML, CSS
+- JavaScript
 
 # How to run ChatBot on your computer 🤔
 - To understand the steps given below, you should know how to create a new Django project and a Python virtual environment.
