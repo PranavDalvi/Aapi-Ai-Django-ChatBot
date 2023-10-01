@@ -3,7 +3,13 @@
     {
       "tag": "greetings1",
       "patterns": [
-        "Hi how are you?"
+        "hi how are you?",
+        "hello",
+        "hi",
+        "hola",
+        "howdy",
+        "greetings",
+        "hey"
       ],
       "responses": [
         "Hello! How can I help you today?",
@@ -14,23 +20,22 @@
     {
       "tag":"greetings2",
       "patterns": [
-        "How are you doing?",
-        "How are you?",
-        "Hi how are you?",
-        "Hello how are you?"
+        "how are you doing?",
+        "how are you?",
+        "hi how are you?",
+        "hello how are you?"
       ],
       "responses": [
         "I'm fine what about you?",
         "Thanks for asking! I'm excellent. How about you?",
-        "You know, according to my lawyer, I don't have to answer that.",
         "Fine, thanks. What do you got for me today?"
       ]
     },
     {
       "tag": "name",
       "patterns": [
-        "What is your name?",
-        "What should I call you?",
+        "what is your name?",
+        "what should I call you?",
         "who are you?"
       ],
       "responses": [
@@ -41,8 +46,6 @@
       "tag":"help",
       "patterns": [
         "help",
-        "Help",
-        "Help!",
         "help!"
       ],
       "responses":[
@@ -52,9 +55,9 @@
     {
       "tag": "admission-degree",
       "patterns": [
-        "What is the admission process for degree?",
-        "How to take admission for degree?",
-        "I want to take admission for degree"
+        "what is the admission process for degree?",
+        "how to take admission for degree?",
+        "i want to take admission for degree"
       ],
       "responses": [
         "https://kirticollege.edu.in/category/degree-admission-notices/"
@@ -63,9 +66,9 @@
     {
       "tag": "admission-pg",
       "patterns": [
-        "What is the admission process for PG?",
-        "How to take admission for Post?",
-        "I want to take admission for PG"
+        "what is the admission process for PG?",
+        "how to take admission for Post?",
+        "i want to take admission for PG"
       ],
       "responses": [
         "https://kirticollege.edu.in/category/post-graduation-notices/"
@@ -74,9 +77,9 @@
     {
       "tag": "admission-junior",
       "patterns": [
-        "What is the admission process for junior?",
-        "How to take admission for junior?",
-        "I want to take admission for junior"
+        "what is the admission process for junior?",
+        "how to take admission for junior?",
+        "i want to take admission for junior"
       ],
       "responses": [
         "https://kirticollege.edu.in/#"
@@ -85,11 +88,11 @@
     {
       "tag": "services",
       "patterns": [
-        "What is the college number?",
-        "What is the college staff number?",
-        "What is the college contact?",
+        "what is the college number?",
+        "what is the college staff number?",
+        "what is the college contact?",
         "what is the contact details?",
-        "How to contact college?"
+        "how to contact college?"
       ],
       "responses": [
         "https://kirticollege.edu.in/contact-us/"
@@ -98,10 +101,10 @@
     {
       "tag": "sport",
       "patterns": [
-        "Is sports available in college?",
-        "Is NCC available in college?",
-        "Is NSS available in college?",
-        "What extra curricular activities are there in college?"
+        "is sports available in college?",
+        "is NCC available in college?",
+        "is NSS available in college?",
+        "what extra curricular activities are there in college?"
       ],
       "responses": [
         "Please contact college"
@@ -111,7 +114,7 @@
       "tag": "exam",
       "patterns": [
         "when is my exam?",
-        "Give me exam details"
+        "give me exam details"
       ],
       "responses": [
         "https://livestudent.deccansociety.org/"
@@ -120,9 +123,9 @@
     {
       "tag": "placement",
       "patterns": [
-        "What is the placement process?",
-        "Which companies comes to college?",
-        "How to seat for on campus placement?",
+        "what is the placement process?",
+        "which companies comes to college?",
+        "how to seat for on campus placement?",
         "college placement reviews ? "
       ],
       "responses": [
@@ -132,9 +135,9 @@
     {
       "tag": "goodbye",
       "patterns": [
-        "Good Bye Aapi",
-        "See You later",
-        "Till next time",
+        "good Bye Aapi",
+        "see You later",
+        "till next time",
         "meet you later"
       ],
       "responses": [
@@ -153,7 +156,8 @@
         "you"
       ],
       "responses": [
-        "Hey there!, I'm still learning stuff can you please elaborate it?"
+        "Hey there!, I'm still learning stuff can you please elaborate it?",
+        "You know, according to my lawyer, I don't have to answer that."
       ]
     }
   ]
