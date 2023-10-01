@@ -10,10 +10,10 @@ from nltk.stem import WordNetLemmatizer
 #from .models import Response, models
 
 # Remove the comments to download additional nltk packages
-# import nltk
-# nltk.download('punkt')
-# nltk.download('wordnet')
-# nltk.download('omw-1.4')
+import nltk
+nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
 
 # from sklearn.feature_extraction.text import TfidfVectorizer
 
@@ -94,7 +94,6 @@ def chatBot(request):
    initial_learning_rate = 0.01
    lr_schedule = tensorflow.keras.optimizers.schedules.ExponentialDecay(initial_learning_rate, decay_steps=10000, decay_rate=0.9)
    sgd = tensorflow.keras.optimizers.SGD(learning_rate=lr_schedule, momentum=0.9, nesterov=True)
-   # sgd = tensorflow.keras.optimizers.SGD(learning_rate=0.01, decay = 1e-6, momentum = 0.9, nesterov = True)
    model.compile(loss='categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
    history = model.fit(np.array(train_x),np.array(train_y),epochs=20,batch_size=1,verbose=7)
    # model.save('chatbot_model.model',history)
@@ -143,6 +142,5 @@ def chatBot(request):
    message = query
    ints = predict_intent_tag(message)
    bot_response = get_response(ints, readobj)
-   # print(bot_response)
    return JsonResponse({"Bot": bot_response})
    
