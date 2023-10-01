@@ -43,7 +43,9 @@ python manage.py migrate
 python manage.py runserver
 ```
 ***
+- SRS Documentation: [https://drive.google.com/file/d/aapi_chatbot_srs/view](https://drive.google.com/file/d/1AjjONYHkVltQLMO_Tunrch9mOx1jlpmm/view)
 - ChatBot image are taken from [flaticon](https://www.flaticon.com/free-icons/bot)
 - User image are taken from [freeiconspng](https://www.freeiconspng.com/img/7563)
 
+***
 Built with :heartpulse: by Sharing Is Caring
