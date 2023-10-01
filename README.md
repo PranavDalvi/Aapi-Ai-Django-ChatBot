@@ -16,13 +16,18 @@ Aapi is build with passion and love by 3 friends [Pranav Dalvi](https://github.c
 - JavaScript
 
 # How to run ChatBot on your computer 🤔
-- Create project `secret key`
+
+- Install the required packages.
+```
+pip install -r requirements.txt
+```
+- First create `secret key` for project
 - Requirements for creating new key:
 	- Be a minimum of 50 characters in length
 	- Contain a minimum of 5 unique characters
 	- Not be prefixed with "django-insecure-"
 
-- Now open project directory (/Aapi-Ai-Django-ChatBot/project/) where settings.py is located.
+- Now open project directory `/Aapi-Ai-Django-ChatBot/project/` where `settings.py` is located.
 - Create new `.env` file and add the newly generated `secret key`
 - .env file should look like this:
 ```
