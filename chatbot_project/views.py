@@ -91,7 +91,10 @@ def chatBot(request):
    train_y = list(training[:,1])
 
    model = Sequential([Dense(128, input_shape = (len(train_x[0]),),activation='relu'),Dropout(0.2),Dense(64, activation='relu'),Dropout(0.2),Dense(len(train_y[0]),activation = 'softmax')])
-   sgd = tensorflow.keras.optimizers.SGD(learning_rate=0.01, decay = 1e-6, momentum = 0.9, nesterov = True)
+   initial_learning_rate = 0.01
+   lr_schedule = tensorflow.keras.optimizers.schedules.ExponentialDecay(initial_learning_rate, decay_steps=10000, decay_rate=0.9)
+   sgd = tensorflow.keras.optimizers.SGD(learning_rate=lr_schedule, momentum=0.9, nesterov=True)
+   # sgd = tensorflow.keras.optimizers.SGD(learning_rate=0.01, decay = 1e-6, momentum = 0.9, nesterov = True)
    model.compile(loss='categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
    history = model.fit(np.array(train_x),np.array(train_y),epochs=20,batch_size=1,verbose=7)
    # model.save('chatbot_model.model',history)
