@@ -45,3 +45,5 @@ python manage.py runserver
 ***
 - ChatBot image are taken from [flaticon](https://www.flaticon.com/free-icons/bot)
 - User image are taken from [freeiconspng](https://www.freeiconspng.com/img/7563)
+
+Built with :heartpulse: by Sharing Is Caring
