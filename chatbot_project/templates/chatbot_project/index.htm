@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PYBOT</title>
+  <title>Aapi-AI ChatBot</title>
 
 <!-- Link to Static CSS -->
   <link rel="stylesheet" type="text/css" href="{% static 'chatbot_project/stylesheets/staticStyle.css' %}">
@@ -269,7 +269,6 @@
     // Here is the main code which Posts and gets responses
     const form1 = document.getElementById("myForm");
     const botTyping = document.querySelector(".botTyping")
-    const user_input = document.querySelector("#query")
     const txtUserInp = document.querySelector("#query");
     form1.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -281,6 +280,12 @@
       updateChatText();
       submit_btn.disabled = true;
       botTyping.classList.remove("hidden");
+      
+      // converting use input to lowerCase
+      let lowerCaseInput = $('#query').val().toLowerCase();
+      
+      // Create the data object with the lowercase input
+      let requestData = { query: lowerCaseInput };
 
       $.ajax({
         method: "GET",
@@ -290,7 +295,7 @@
           "X-Requested-With": "XMLHttpRequest",
           "X-CSRFToken": csrftoken,
         },
-        data: { query: $('#query').val() }
+        data: requestData
       })
         // This steps should be done if the input is successfully submitted to the bot and get response
         .done(function (response) {
