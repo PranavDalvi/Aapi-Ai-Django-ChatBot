@@ -16,16 +16,27 @@ Aapi is build with passion and love by 3 friends [Pranav Dalvi](https://github.c
 - JavaScript
 
 # How to run ChatBot on your computer 🤔
-- To understand the steps given below, you should know how to create a new Django project and a Python virtual environment.
-1. Download the required libraries from requirements.txt (Python virtual environment is required).
-2. Create a new Django project. (why? Because we will need a `secret key` to run the project).
-3. Open the newly created Django project and copy the full string of secret key from `settings.py`.
-4. Now open the ChatBot project then open the project folder and create a new file named as `.env` and paste the secret key.
+- Create project `secret key`
+- Requirements for creating new key:
+	- Be a minimum of 50 characters in length
+	- Contain a minimum of 5 unique characters
+	- Not be prefixed with "django-insecure-"
+
+- Now open project directory (/Aapi-Ai-Django-ChatBot/project/) where settings.py is located.
+- Create new `.env` file and add the newly generated `secret key`
 - .env file should look like this:
 ```
-SECRET_KEY = 'dlm*zt#1-3g!xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+SECRET_KEY = "dlm*zt#1-3g!xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
-5. Do the migrations and run the project.
+- Save the .env file
+- Do the migrations 
+```
+python manage.py migrate
+```
+- And run the project.
+```
+python manage.py runserver
+```
 ***
 - ChatBot image are taken from [flaticon](https://www.flaticon.com/free-icons/bot)
 - User image are taken from [freeiconspng](https://www.freeiconspng.com/img/7563)
